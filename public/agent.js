@@ -373,20 +373,21 @@ async function executeWordTool(name, args) {
     if (name === "gerer_mise_en_page") {
       const { action, texte } = args;
       if (action === "saut_de_page") {
-        const selection = context.document.getSelection();
-        selection.insertBreak(Word.BreakType.page, Word.InsertLocation.after);
+        context.document.body.insertBreak(Word.BreakType.page, Word.InsertLocation.end);
         await context.sync();
         return { statut: "Saut de page inséré." };
       }
       if (action === "definir_entete") {
         const header = context.document.sections.getFirst().getHeader(Word.HeaderFooterType.primary);
-        header.insertParagraph(texte || "", Word.InsertLocation.replace);
+        header.clear();
+        header.insertParagraph(texte || "", Word.InsertLocation.start);
         await context.sync();
         return { statut: "En-tête mis à jour." };
       }
       if (action === "definir_pied_de_page") {
         const footer = context.document.sections.getFirst().getFooter(Word.HeaderFooterType.primary);
-        footer.insertParagraph(texte || "", Word.InsertLocation.replace);
+        footer.clear();
+        footer.insertParagraph(texte || "", Word.InsertLocation.start);
         await context.sync();
         return { statut: "Pied de page mis à jour." };
       }
