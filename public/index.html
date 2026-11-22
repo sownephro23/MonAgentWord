@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Gemini Word</title>
+  <!-- Bibliothèque officielle Microsoft Office.js -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="title-row">
+        <h1>Agent Gemini</h1>
+        <button id="toggleSettingsBtn" class="icon-btn" title="Paramètres API">⚙️</button>
+      </div>
+      <div class="model-bar">
+        <label for="modelSelect">Modèle :</label>
+        <select id="modelSelect">
+          <option value="gemini-4-hydrogen" selected>Gemini 4 Hydrogen (Défaut / Gratuit &amp; Payant)</option>
+          <option value="gemini-4-carbon">Gemini 4 Carbon (Raisonnement avancé)</option>
+          <option value="gemini-4-neon">Gemini 4 Neon (Haute performance)</option>
+          <option value="gemini-4-argon">Gemini 4 Argon (Rapide &amp; Précis)</option>
+          <option value="gemini-3.8-flash">Gemini 3.8 Flash (Agent rapide)</option>
+          <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite (Ultra-rapide / Gratuit)</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Panneau de configuration de la clé API (sauvegardée en localStorage) -->
+    <section id="settingsPanel" class="settings-panel hidden">
+      <label for="apiKeyInput">Clé API Google AI Studio :</label>
+      <div class="api-row">
+        <input type="password" id="apiKeyInput" placeholder="AIzaSy..." />
+        <button id="saveKeyBtn" class="btn-secondary">Enregistrer</button>
+      </div>
+      <label for="systemInstructionInput" class="mt-8">Rôle / Instructions système de votre agent :</label>
+      <textarea id="systemInstructionInput" rows="3" placeholder="Ex: Tu es un expert en rédaction scientifique et médicale. Sois précis, structuré et rigoureux."></textarea>
+    </section>
+
+    <!-- Actions rapides en un clic -->
+    <section class="quick-actions">
+      <button class="chip" data-prompt="Corrige l'orthographe, la grammaire et améliore le style de la sélection en conservant le sens exact.">✨ Corriger &amp; Améliorer</button>
+      <button class="chip" data-prompt="Structure ce texte avec de vrais titres Word (Heading1, Heading2) et des listes à puces claires.">📑 Structurer avec Styles</button>
+      <button class="chip" data-prompt="Fais une synthèse claire et structurée de l'ensemble du document.">🔍 Résumer le document</button>
+      <button class="chip" data-prompt="Transforme les données sélectionnées en un vrai tableau Word bien organisé.">📊 Créer un tableau</button>
+    </section>
+
+    <!-- Zone de discussion / historique des actions -->
+    <main id="chatHistory" class="chat-history">
+      <div class="msg msg-agent">
+        Bonjour ! Sélectionnez du texte dans Word (ou laissez le curseur où vous voulez écrire) et donnez-moi vos instructions. Je peux lire tout le document, modifier le texte, créer des tableaux et appliquer les styles natifs de Word.
+      </div>
+    </main>
+
+    <!-- Zone de saisie -->
+    <footer class="footer">
+      <div class="options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="trackChangesToggle" />
+          <span>Mode Révision (Track Changes)</span>
+        </label>
+      </div>
+      <div class="input-box">
+        <textarea id="userPrompt" rows="3" placeholder="Demandez à votre agent (ex: Rédige l'introduction avec un Titre 1 et 2 sous-parties)..."></textarea>
+        <button id="sendBtn" class="btn-primary">Exécuter</button>
+      </div>
+      <div id="statusBar" class="status-bar">Prêt</div>
+    </footer>
+  </div>
+
+  <script src="agent.js"></script>
+</body>
+</html>

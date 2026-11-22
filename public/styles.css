@@ -1,0 +1,234 @@
+:root {
+  --primary: #0f6cbd;
+  --primary-hover: #115ea3;
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e1dfdd;
+  --text: #242424;
+  --text-muted: #616161;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  gap: 8px;
+}
+
+.header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.title-row h1 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.model-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.model-bar label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+select, input, textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  background: var(--surface);
+}
+
+select:focus, input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.settings-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.api-row {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mt-8 {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.chip:hover {
+  background: #ebf3fc;
+  border-color: var(--primary);
+}
+
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.msg {
+  padding: 8px 10px;
+  border-radius: 6px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.msg-user {
+  background: #ebf3fc;
+  align-self: flex-end;
+  max-width: 90%;
+}
+
+.msg-agent {
+  background: #f3f2f1;
+  align-self: flex-start;
+  max-width: 95%;
+}
+
+.msg-tool {
+  font-size: 11px;
+  color: var(--primary);
+  font-style: italic;
+  padding: 2px 6px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.options-row {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+  background: #a19f9d;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #edebe9;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.status-bar {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+}
